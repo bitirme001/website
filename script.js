@@ -5,9 +5,10 @@ const mediaLinks = Object.freeze({
   dashboardRepo: 'https://github.com/bitirme001/moborobo-platform',
 });
 
-function linkMarkup(href, label, className = '') {
+function linkMarkup(href, label, className = '', newTab = true) {
   const classAttr = className ? ` class="${className}"` : '';
-  return `<a${classAttr} href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+  const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+  return `<a${classAttr} href="${href}"${targetAttr}>${label}</a>`;
 }
 
 const details = {
@@ -129,17 +130,17 @@ const details = {
     subHtml: [
       linkMarkup(mediaLinks.videos, 'Project Videos'),
       linkMarkup(mediaLinks.repo, 'GitHub Repository'),
-      linkMarkup(mediaLinks.documentation, 'Documentation'),
+      linkMarkup(mediaLinks.documentation, 'Documentation', '', false),
     ].join(' · '),
     text: `
       <p>The project includes a comprehensive set of <strong>demonstration materials</strong> showcasing the robot in action — from bin detection tests to full autonomous navigation runs on the campus environment.</p>
       <p>All source code, ROS packages, firmware, and documentation are available in the <strong>public project resources</strong>, making the system easy to explore and reproduce.</p>
-      <p>Use the links below to open the repositories, demo folder, and documentation in a new tab.</p>
+      <p>Use the links below to open the repositories, demo folder, and documentation directly.</p>
       <div class="detail-chips">
         ${linkMarkup(mediaLinks.repo, 'GitHub', 'chip chip-link')}
         ${linkMarkup(mediaLinks.videos, 'Demo Videos', 'chip chip-link')}
         ${linkMarkup(mediaLinks.repo, 'Open Source', 'chip chip-link')}
-        ${linkMarkup(mediaLinks.documentation, 'Documentation', 'chip chip-link')}
+        ${linkMarkup(mediaLinks.documentation, 'Documentation', 'chip chip-link', false)}
       </div>
     `,
     specs: [
@@ -160,6 +161,7 @@ const details = {
         label: 'Documentation',
         val: 'Project paper and supporting documentation in a separate page',
         href: mediaLinks.documentation,
+        newTab: false,
       },
       {
         e: '🖥️',
@@ -173,8 +175,11 @@ const details = {
 
 function renderSpecItem(spec) {
   const tag = spec.href ? 'a' : 'div';
+  const openInNewTab = spec.newTab !== false;
   const hrefAttrs = spec.href
-    ? ` href="${spec.href}" target="_blank" rel="noopener noreferrer"`
+    ? openInNewTab
+      ? ` href="${spec.href}" target="_blank" rel="noopener noreferrer"`
+      : ` href="${spec.href}"`
     : '';
   const className = spec.href ? 'spec-item spec-item-link' : 'spec-item';
 

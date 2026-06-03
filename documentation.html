@@ -61,54 +61,30 @@
     font-size: 17px;
     line-height: 1.8;
     color: var(--text-muted);
-    margin-bottom: 32px;
+    margin-bottom: 22px;
   }
 
-  .meta-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 18px;
-    margin-bottom: 18px;
-  }
-
-  .card {
+  .toolbar {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 24px;
-    padding: 28px;
+    padding: 20px 24px;
     box-shadow: 0 22px 60px rgba(31,41,55,0.06);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
   }
 
-  .card h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    margin-bottom: 14px;
-  }
-
-  .card p {
+  .toolbar p {
     font-size: 15px;
     line-height: 1.8;
     color: var(--text-muted);
-  }
-
-  .meta-list {
-    margin-top: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .meta-item {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px 16px;
-    color: var(--text-muted);
-    line-height: 1.6;
+    max-width: 720px;
   }
 
   .actions {
-    margin-top: 24px;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -147,8 +123,7 @@
   .viewer-head {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 18px;
+    justify-content: flex-start;
     margin-bottom: 18px;
   }
 
@@ -173,10 +148,13 @@
 
   @media (max-width: 860px) {
     body { padding: 32px 20px; }
-    .meta-grid { grid-template-columns: 1fr; }
+    .toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .viewer-head {
       flex-direction: column;
-      align-items: stretch;
+      align-items: flex-start;
     }
     .pdf-frame {
       height: 68vh;
@@ -189,41 +167,26 @@
     <div class="tag">Project Documentation</div>
     <h1>Paper and <span>Technical Docs</span></h1>
     <p class="intro">
-      The project paper is now attached directly on this page. Visitors can preview it here or open the PDF in a separate tab.
+      The project paper is shown directly on this page. Use the back button below to return to the main project website.
     </p>
 
-    <section class="meta-grid">
-      <article class="card">
-        <h2>Included Paper</h2>
+    <section class="toolbar">
+      <div>
         <p>
-          This section presents the uploaded project paper as an embedded document. That keeps the documentation entry usable without sending people to an external file list.
+          The article is embedded below, so there is no extra PDF step here anymore.
         </p>
-        <div class="meta-list">
-          <div class="meta-item">Embedded preview is shown below on the same page.</div>
-          <div class="meta-item">The PDF can also be opened directly in a new tab.</div>
-          <div class="meta-item">The file currently used is <strong>makale-3.pdf</strong>.</div>
-        </div>
-      </article>
-
-      <aside class="card">
-        <h2>Quick Access</h2>
-        <p>
-          Use these links to return to the main site or open the paper file directly.
-        </p>
-        <div class="actions">
-          <a class="button" href="index.html">Back to Project Site</a>
-          <a class="button" href="makale-3.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
-        </div>
-      </aside>
+      </div>
+      <div class="actions">
+        <a class="button" href="index.html" onclick="if (window.history.length > 1) { history.back(); return false; }">Back to Project Site</a>
+      </div>
     </section>
 
     <section class="viewer-card">
       <div class="viewer-head">
         <div>
-          <h2>Embedded PDF Viewer</h2>
+          <h2>Project Paper</h2>
           <p>The paper is rendered directly from the local project file below.</p>
         </div>
-        <a class="button" href="makale-3.pdf" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
       </div>
       <iframe
         class="pdf-frame"
