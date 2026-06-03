@@ -1,7 +1,7 @@
 const mediaLinks = Object.freeze({
   repo: 'https://github.com/bitirme001/moborobo',
   videos: 'https://drive.google.com/drive/u/0/folders/1Vqxp6dd2DW0B6Cr9fP_umHxWPL1-zbUr',
-  documentation: 'makale-3.pdf',
+  documentation: 'ASWC.pdf',
   dashboardRepo: 'https://github.com/bitirme001/moborobo-platform',
 });
 
