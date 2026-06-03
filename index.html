@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Autonomous Smart Waste Collection Robot</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ASWCR</div>
+  <div class="nav-links">
+    <a href="#hero">Overview</a>
+    <a href="#categories">System</a>
+    <a href="#result">Result</a>
+    <a href="#team">Team</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Hacettepe University · 2025–2026</div>
+    <h1 class="hero-title">
+      Autonomous<br/><span>Smart Waste</span><br/>Collection Robot
+    </h1>
+    <p class="hero-desc">
+      An intelligent campus waste management system that detects full bins, plans optimal routes, and navigates autonomously — reducing unnecessary trips while keeping environments clean and sustainable.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2D</div>
+        <div class="stat-label">LiDAR Mapping</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">A*</div>
+        <div class="stat-label">Path Algorithm</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">MQTT</div>
+        <div class="stat-label">Real-Time Comm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="robot-frame">
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="ping"></div>
+      <!-- Robot SVG illustration -->
+      <svg class="robot-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Body -->
+        <rect x="55" y="80" width="90" height="70" rx="12" fill="#1a2220" stroke="#3ddc84" stroke-width="1.5"/>
+        <!-- Head -->
+        <rect x="68" y="48" width="64" height="42" rx="10" fill="#121918" stroke="#3ddc84" stroke-width="1.5"/>
+        <!-- Eyes -->
+        <circle cx="86" cy="68" r="7" fill="#0b0f0e" stroke="#3ddc84" stroke-width="1.5"/>
+        <circle cx="114" cy="68" r="7" fill="#0b0f0e" stroke="#3ddc84" stroke-width="1.5"/>
+        <circle cx="86" cy="68" r="3" fill="#3ddc84"/>
+        <circle cx="114" cy="68" r="3" fill="#3ddc84"/>
+        <!-- Antenna -->
+        <line x1="100" y1="48" x2="100" y2="30" stroke="#3ddc84" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="100" cy="27" r="4" fill="#3ddc84" opacity="0.8"/>
+        <circle cx="100" cy="27" r="4" fill="#3ddc84">
+          <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Screen on body -->
+        <rect x="68" y="92" width="64" height="36" rx="6" fill="#0b0f0e" stroke="#3ddc84" stroke-width="1"/>
+        <line x1="75" y1="102" x2="105" y2="102" stroke="#3ddc84" stroke-width="1" opacity="0.5"/>
+        <line x1="75" y1="110" x2="120" y2="110" stroke="#3ddc84" stroke-width="1" opacity="0.3"/>
+        <line x1="75" y1="118" x2="95" y2="118" stroke="#3ddc84" stroke-width="1" opacity="0.5"/>
+        <!-- Wheels -->
+        <ellipse cx="72" cy="152" rx="16" ry="8" fill="#1a2220" stroke="#3ddc84" stroke-width="1.5"/>
+        <ellipse cx="128" cy="152" rx="16" ry="8" fill="#1a2220" stroke="#3ddc84" stroke-width="1.5"/>
+        <ellipse cx="72" cy="152" rx="7" ry="3.5" fill="#3ddc84" opacity="0.3"/>
+        <ellipse cx="128" cy="152" rx="7" ry="3.5" fill="#3ddc84" opacity="0.3"/>
+        <!-- Arm -->
+        <line x1="55" y1="100" x2="35" y2="120" stroke="#3ddc84" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="35" cy="120" r="5" fill="#1a2220" stroke="#3ddc84" stroke-width="1.5"/>
+        <!-- Wifi signal -->
+        <path d="M155 75 Q165 65 175 75" stroke="#3ddc84" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <path d="M159 79 Q165 72 171 79" stroke="#3ddc84" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6">
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+        </path>
+        <circle cx="165" cy="83" r="2" fill="#3ddc84">
+          <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <p class="section-label">System Components</p>
+  <div class="scroll-track-wrap">
+    <div class="scroll-track" id="scrollTrack">
+
+      <div class="cat-card" data-id="bins" onclick="openDetail('bins', this)">
+        <div class="cat-icon">🗑️</div>
+        <div class="cat-title">Full Bin Detection</div>
+        <div class="cat-sub">Ultrasonic + load cell sensor fusion with threshold-based algorithm</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" data-id="localization" onclick="openDetail('localization', this)">
+        <div class="cat-icon">📡</div>
+        <div class="cat-title">Localization</div>
+        <div class="cat-sub">SLAM Toolbox + AMCL for real-time 2D map building and pose estimation</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" data-id="navigation" onclick="openDetail('navigation', this)">
+        <div class="cat-icon">🤖</div>
+        <div class="cat-title">Autonomous Movement</div>
+        <div class="cat-sub">ROS move_base with global/local planners and dynamic obstacle avoidance</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" data-id="path" onclick="openDetail('path', this)">
+        <div class="cat-icon">🗺️</div>
+        <div class="cat-title">Optimal Shortest Path</div>
+        <div class="cat-sub">Node-based route optimization with A* cost matrix and dynamic re-routing</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" data-id="dashboard" onclick="openDetail('dashboard', this)">
+        <div class="cat-icon">📊</div>
+        <div class="cat-title">Web Dashboard</div>
+        <div class="cat-sub">MQTT-powered real-time monitoring for bin status and sensor data</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="cat-card" data-id="media" onclick="openDetail('media', this)">
+        <div class="cat-icon">🎬</div>
+        <div class="cat-title">Media & Demos</div>
+        <div class="cat-sub">Project demonstrations, test videos, and GitHub repository</div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL PANEL -->
+<div id="detail-panel">
+  <div class="detail-header">
+    <div class="detail-header-left">
+      <div class="detail-icon" id="d-icon"></div>
+      <div class="detail-title-group">
+        <div class="detail-title" id="d-title"></div>
+        <div class="detail-subtitle" id="d-sub"></div>
+      </div>
+    </div>
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+  </div>
+  <div class="detail-body">
+    <div class="detail-text" id="d-text"></div>
+    <div class="detail-specs" id="d-specs"></div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- RESULT + TEAM -->
+<section id="result">
+  <div>
+    <p class="result-label">Conclusion</p>
+    <h2 class="result-title">A Smarter,<br/><span>Cleaner</span><br/>Environment</h2>
+    <p class="result-text">
+      The autonomous waste collection system was developed to significantly reduce time and energy consumption in large-scale environments. By combining intelligent bin monitoring with adaptive path planning, the robot only travels when and where needed.
+    </p>
+    <p class="result-text">
+      The system is designed for seamless deployment across a wide range of facilities:
+    </p>
+    <div class="use-cases">
+      <div class="use-case">University campuses</div>
+      <div class="use-case">Corporate facilities and office parks</div>
+      <div class="use-case">International airports and transit hubs</div>
+      <div class="use-case">Shopping malls and retail centers</div>
+      <div class="use-case">Hospitals and healthcare campuses</div>
+    </div>
+  </div>
+
+  <div id="team">
+    <p class="result-label">The Team</p>
+    <div class="team-grid">
+      <div class="supervisor-card">
+        <div class="supervisor-avatar">⭐</div>
+        <div>
+          <div class="supervisor-name">Prof. Dr. Mehmet Önder Efe</div>
+          <div class="supervisor-role">Project Supervisor</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">CA</div>
+        <div class="team-name">Cansu Aslan</div>
+        <div class="team-role">Computer Engineering</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">GŞ</div>
+        <div class="team-name">Gökdeniz Şimşek</div>
+        <div class="team-role">Computer Engineering</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MK</div>
+        <div class="team-name">Mert Can Köseoğlu</div>
+        <div class="team-role">Computer Engineering</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">ZK</div>
+        <div class="team-name">Zeynep Nisa Karataş</div>
+        <div class="team-role">Computer Engineering</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Hacettepe University · Computer Engineering Final Design Project · <span>2025–2026</span></div>
+  <div>Autonomous Smart Waste Collection Robot</div>
+</footer>
+
+<script src="script.js">
+</script>
+</body>
+</html>
