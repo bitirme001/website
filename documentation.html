@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: rgba(247,255,249,0.94);
+    --surface2: #eefcf3;
+    --green: #28a745;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --border: rgba(40,167,69,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top right, rgba(40,167,69,0.08), transparent 32%),
+      linear-gradient(180deg, #ffffff 0%, #f9fffb 100%);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    padding: 48px 24px;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(40,167,69,0.1);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 14px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+
+  h1 span { color: var(--green); }
+
+  .intro {
+    max-width: 760px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 22px 60px rgba(31,41,55,0.06);
+  }
+
+  .card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .meta-list {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .meta-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(40,167,69,0.1);
+    color: var(--green);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(40,167,69,0.3);
+    background: rgba(40,167,69,0.16);
+  }
+
+  .viewer-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 22px 60px rgba(31,41,55,0.06);
+  }
+
+  .viewer-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .viewer-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .viewer-head p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .pdf-frame {
+    width: 100%;
+    height: min(78vh, 980px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+  }
+
+  @media (max-width: 860px) {
+    body { padding: 32px 20px; }
+    .meta-grid { grid-template-columns: 1fr; }
+    .viewer-head {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .pdf-frame {
+      height: 68vh;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="tag">Project Documentation</div>
+    <h1>Paper and <span>Technical Docs</span></h1>
+    <p class="intro">
+      The project paper is now attached directly on this page. Visitors can preview it here or open the PDF in a separate tab.
+    </p>
+
+    <section class="meta-grid">
+      <article class="card">
+        <h2>Included Paper</h2>
+        <p>
+          This section presents the uploaded project paper as an embedded document. That keeps the documentation entry usable without sending people to an external file list.
+        </p>
+        <div class="meta-list">
+          <div class="meta-item">Embedded preview is shown below on the same page.</div>
+          <div class="meta-item">The PDF can also be opened directly in a new tab.</div>
+          <div class="meta-item">The file currently used is <strong>makale-3.pdf</strong>.</div>
+        </div>
+      </article>
+
+      <aside class="card">
+        <h2>Quick Access</h2>
+        <p>
+          Use these links to return to the main site or open the paper file directly.
+        </p>
+        <div class="actions">
+          <a class="button" href="index.html">Back to Project Site</a>
+          <a class="button" href="makale-3.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="viewer-card">
+      <div class="viewer-head">
+        <div>
+          <h2>Embedded PDF Viewer</h2>
+          <p>The paper is rendered directly from the local project file below.</p>
+        </div>
+        <a class="button" href="makale-3.pdf" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
+      </div>
+      <iframe
+        class="pdf-frame"
+        src="makale-3.pdf"
+        title="Project paper PDF">
+      </iframe>
+    </section>
+  </main>
+</body>
+</html>
