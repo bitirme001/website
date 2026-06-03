@@ -1,7 +1,7 @@
 const mediaLinks = Object.freeze({
   repo: 'https://github.com/bitirme001/moborobo',
   videos: 'https://drive.google.com/drive/u/0/folders/1Vqxp6dd2DW0B6Cr9fP_umHxWPL1-zbUr',
-  documentation: 'documentation.html',
+  documentation: 'makale-3.pdf',
   dashboardRepo: 'https://github.com/bitirme001/moborobo-platform',
 });
 
@@ -130,17 +130,17 @@ const details = {
     subHtml: [
       linkMarkup(mediaLinks.videos, 'Project Videos'),
       linkMarkup(mediaLinks.repo, 'GitHub Repository'),
-      linkMarkup(mediaLinks.documentation, 'Documentation', '', false),
+      linkMarkup(mediaLinks.documentation, 'Documentation'),
     ].join(' · '),
     text: `
       <p>The project includes a comprehensive set of <strong>demonstration materials</strong> showcasing the robot in action — from bin detection tests to full autonomous navigation runs on the campus environment.</p>
       <p>All source code, ROS packages, firmware, and documentation are available in the <strong>public project resources</strong>, making the system easy to explore and reproduce.</p>
-      <p>Use the links below to open the repositories, demo folder, and documentation directly.</p>
+      <p>Use the links below to open the repositories, demo folder, and project paper directly.</p>
       <div class="detail-chips">
         ${linkMarkup(mediaLinks.repo, 'GitHub', 'chip chip-link')}
         ${linkMarkup(mediaLinks.videos, 'Demo Videos', 'chip chip-link')}
         ${linkMarkup(mediaLinks.repo, 'Open Source', 'chip chip-link')}
-        ${linkMarkup(mediaLinks.documentation, 'Documentation', 'chip chip-link', false)}
+        ${linkMarkup(mediaLinks.documentation, 'Documentation', 'chip chip-link')}
       </div>
     `,
     specs: [
@@ -159,9 +159,8 @@ const details = {
       {
         e: '📄',
         label: 'Documentation',
-        val: 'Project paper and supporting documentation in a separate page',
+        val: 'Project paper opens directly as PDF',
         href: mediaLinks.documentation,
-        newTab: false,
       },
       {
         e: '🖥️',
@@ -175,11 +174,8 @@ const details = {
 
 function renderSpecItem(spec) {
   const tag = spec.href ? 'a' : 'div';
-  const openInNewTab = spec.newTab !== false;
   const hrefAttrs = spec.href
-    ? openInNewTab
-      ? ` href="${spec.href}" target="_blank" rel="noopener noreferrer"`
-      : ` href="${spec.href}"`
+    ? ` href="${spec.href}" target="_blank" rel="noopener noreferrer"`
     : '';
   const className = spec.href ? 'spec-item spec-item-link' : 'spec-item';
 
